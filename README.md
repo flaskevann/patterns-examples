@@ -21,7 +21,7 @@ I'm mostly doing this for myself, but anybody interested can of course use the e
 
 Each implementation has to have at least one model, a UML diagram and some test execution code.
 
-Look to the <code>Shape</code> model and <code>factory-and-facade.ts</code> test code for an example. Which is runnable by executing <code>node run factory-and-facade.ts</code> from the command line when the project it set up.
+Look to the <code>Shape</code> model and <code>factory-and-facade.ts</code> test code for an example. Which prints out all the content to the console by executing <code>node run factory-and-facade.ts</code> when the project it set up.
 
 ## License
 
