@@ -11,6 +11,12 @@ When developing software I've always focused on its behavior and not given the s
 
 Soon after I started work on this project, which is probably going to be never ending.
 
+## The Plan
+
+Every commonly used pattern and principle is to be studied and learned by creating and documenting a working example implementation. This implementation can then easily be looked up again later if something suddenly becomes unclear.
+
+I'm mostly doing this for myself, but anybody interested can use the examples and also contribute if they want to.
+
 ## License
 
 Has a regular MIT license.
