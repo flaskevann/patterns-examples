@@ -15,7 +15,7 @@ Soon after I started work on this project, which is probably going to be never e
 
 Every commonly used pattern and principle is to be studied and learned by creating and documenting a working example implementation. This implementation can then easily be looked up again later if something suddenly becomes unclear.
 
-I'm mostly doing this for myself, but anybody interested can use the examples and also contribute if they want to.
+I'm mostly doing this for myself, but anybody interested can of course use the examples and or contribute if they want to.
 
 ## License
 
