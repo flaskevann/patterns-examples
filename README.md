@@ -1,7 +1,7 @@
 
 # patterns-examples
 
-Simplified example implementations of common architectural- and design patterns.
+Simplified example implementations of common architectural- and design patterns (including principles like SOLID).
 
 Chosen tools are Node with TypeScript etc. and Microsoft Office Visio with UML.
 
