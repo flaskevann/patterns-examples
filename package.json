@@ -1,0 +1,16 @@
+{
+  "name": "patterns-examples",
+  "version": "1.0.0",
+  "description": "Simplified example implementations of common architectural- and design patterns.",
+  "keywords": ["example", "architectural", "design", "patterns", "typescript"],
+  "author": "Ove Bakken",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0"
+  }
+}
