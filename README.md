@@ -23,6 +23,14 @@ Each implementation has to have at least one model, a UML diagram, some test exe
 
 Look to the <code>Shape</code> model and <code>factory-and-facade.ts</code> test code for an example. Which prints out all the content to the console by executing <code>node run factory-and-facade.ts</code> when the project it set up.
 
+### Patterns
+
+Added patterns so far:
+
+- Facade
+- Factory
+- Singleton
+
 ## License
 
 Has a regular MIT license.
