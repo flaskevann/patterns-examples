@@ -21,7 +21,7 @@ I'm mostly doing this for myself, but anybody interested can use the examples an
 
 Each implementation has to have at least one model, a UML diagram and some test execution code. Unit tests would also be nice. ;-)
 
-Look to the <code>Shape</code> model and <code>factory-and-facade.ts</code> test code for an example. Which prints out all the content to the console by executing <code>node run factory-and-facade.ts</code> when the project it set up.
+For an example: Look to the <code>Shape</code> model and the <code>ShapeClient</code>. All of this source code can be printed to the console by executing <code>node run factory-and-facade.ts</code> when the Git archive is cloned and dependencies installed.
 
 ### Patterns
 
