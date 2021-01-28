@@ -15,6 +15,8 @@ And soon after I started work on this project, which is probably going to be nev
 
 Every commonly used pattern and principle is to be studied and learned by creating and documenting a working example implementation. This implementation can then easily be looked up again later if something suddenly becomes unclear.
 
+Sometimes an existing example may also need to be updated or improved upon if something is missing or just plain wrong. This is a work in progress after all.
+
 I'm mostly doing this for myself, but anybody interested can use the examples and or contribute if they want to.
 
 ### Contents
