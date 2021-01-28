@@ -28,7 +28,7 @@ Each implementation has to have at least one model, a UML diagram and some test 
 
 ### Patterns
 
-List of pattern examples so far:
+List of pattern implementation examples so far:
 
 - Facade
 - Factory
