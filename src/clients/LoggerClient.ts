@@ -1,5 +1,4 @@
-import ILogger from "./ILogger"
-import Logger from "./Logger"
+import { ILogger, Logger } from "../models/logging/Logger"
 
 export default function run() {
 
@@ -15,7 +14,7 @@ export default function run() {
     logger2.logToConsole("Second log entry goes to console")
     // l2.logToFile("Third log entry is going to trigger an error")
 
-    console.log("logger1 and logger2 is the same object: " + (logger1 === logger2))
+    console.log(`logger1 and logger2 is the same object: ${logger1 === logger2}`)
     
     // .. some kind of client code after
 }

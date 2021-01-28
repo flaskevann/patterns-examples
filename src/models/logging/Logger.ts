@@ -1,8 +1,12 @@
-import ILogger from "./ILogger"
-
 const fs = require('fs')
 
-export default class Logger implements ILogger {
+export interface ILogger {
+    setup(filePath : string) : void
+    logToFile(text : string) : void
+    logToConsole(text : string) : void
+}
+
+export class Logger implements ILogger {
 
     private static instance : ILogger
     private static filePath : string

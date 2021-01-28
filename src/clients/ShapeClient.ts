@@ -1,5 +1,5 @@
-import IShape, { Circle, Square } from './Shape'
-import ShapeFactory from "./ShapeFactory"
+import IShape, { Circle, Square } from '../models/shapes/ShapeFacade'
+import ShapeFactory from "../models/shapes/ShapeFactory"
 
 export default function run() {
 
