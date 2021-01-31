@@ -34,6 +34,7 @@ List of pattern implementation examples so far:
 - Factory
 - Singleton
 - Strategy
+- Observer
 
 ## License
 
