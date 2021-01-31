@@ -1,4 +1,4 @@
-import IShape, { Circle, Square } from '../models/shapes/ShapeFacade'
+import IShape, { Circle, Square } from '../models/shapes/Shape'
 import ShapeFactory from "../models/shapes/ShapeFactory"
 
 export default function run() {
