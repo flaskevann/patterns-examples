@@ -1,4 +1,4 @@
-import IShape, { Circle, Square } from './ShapeFacade'
+import IShape, { Circle, Square } from './Shape'
 
 export default abstract class ShapeFactory {
     static drawCircle(x : number, y : number, radius : number, color : string) : IShape {

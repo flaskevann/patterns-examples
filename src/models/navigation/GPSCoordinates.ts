@@ -11,17 +11,11 @@ export default class GPSCoordinates {
         this.longitude = longitude
     }
 
-    public Latitude() {
-        return this.latitude
-    }
-    public Lat() {
+    public getLatitude() {
         return this.latitude
     }
 
-    public Longitude() {
+    public getLongitude() {
         return this.longitude
     }
-    public Long() {
-        return this.longitude
-    }    
 }

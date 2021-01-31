@@ -8,7 +8,6 @@ export default function run() {
 
     // .. some kind of client code before
 
-    console.log()
     console.log("A UK traveler needs to get from Salisbury town center to Alderbury ....")
     const startCoord = new GPSCoordinates(51.06571447916112, -1.7940081075245053)
     const stopCoord = new GPSCoordinates(51.04132361957322, -1.7337493118918201)
