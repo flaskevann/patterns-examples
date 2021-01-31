@@ -33,7 +33,7 @@ List of pattern implementation examples so far:
 - Facade
 - Factory
 - Singleton
-- Strategy
+- Strategy (same as Policy pattern)
 - Observer
 
 ## License
