@@ -30,7 +30,7 @@ Each implementation has to have at least one model, a UML diagram and some test 
 
 List of pattern implementation examples so far:
 
-- Facade
+- Facade (also spelled Façade)
 - Factory
 - Singleton
 - Strategy (same as Policy pattern)
