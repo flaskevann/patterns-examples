@@ -35,6 +35,7 @@ List of pattern implementation examples so far:
 - Singleton
 - Strategy (same as Policy pattern)
 - Observer
+- Builder
 
 ## License
 
