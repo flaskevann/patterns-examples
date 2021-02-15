@@ -37,6 +37,7 @@ List of pattern implementation examples so far:
 - Observer
 - Builder
 - Adapter
+- State
 
 ## License
 
