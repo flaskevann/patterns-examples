@@ -38,6 +38,7 @@ List of pattern implementation examples so far:
 - Builder
 - Adapter
 - State
+- Wrapper (also called Decorator)
 
 ## License
 
