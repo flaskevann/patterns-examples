@@ -1,6 +1,8 @@
 import { log } from "../../tools/logging"
 
-import { IScrabbleBoardState, ScrabbleBoardReadyState, ScrabbleBoardBusyState } from "./ScrabbleBoardState"
+import { ScrabbleBoardState,
+         ScrabbleBoardReadyState,
+         ScrabbleBoardBusyState } from "./ScrabbleBoardState"
 
 export default class ScrabbleBoard {
     private tiles : string[] = new Array()
@@ -9,13 +11,18 @@ export default class ScrabbleBoard {
     private players : string[] // player ids
     private activePlayerId : string
     private playerIdForPlayedTiles : string
+    private playTimeout : number // forces pause after each tile play
+                                 // to give players time to challenge
+    private state : ScrabbleBoardState
 
-    private state : IScrabbleBoardState
-
-    constructor(players : string[]) {
+    constructor(players : string[], playTimeout : number) {
         if (!players || players.length === 1 || players.length > 4)
             throw new Error("Game needs 2-4 players.")
 
+        if (playTimeout < 10 || playTimeout > 120)
+            throw new Error("Players should be given 10-120 seconds to challenge words.")
+
+        this.playTimeout = playTimeout
         this.state = new ScrabbleBoardReadyState(this)
         this.players = JSON.parse(JSON.stringify(players))
 
@@ -139,7 +146,11 @@ export default class ScrabbleBoard {
         this.setState(new ScrabbleBoardReadyState(this))
     }
 
-    private setState(newState : IScrabbleBoardState) {
+    public getPlayTimeout() {
+        return this.playTimeout
+    }
+
+    private setState(newState : ScrabbleBoardState) {
         this.state = newState
 
         log(`(Board state: ${this.state.getDescription()}.)`)

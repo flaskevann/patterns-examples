@@ -1,5 +1,5 @@
 import { IMessager,
-         EmailMessagerLegacy,
+         EmailMessager,
          SMSMessagerWrapper,
          FacebookMessagerWrapper } from "../models/messager/Messager"
 
@@ -12,7 +12,7 @@ export default function run() {
 
     console.log("The year is 1990 ...")
     console.log("Sending a message using email ..:")
-    const emailNotifier : IMessager = new EmailMessagerLegacy(["pupil1@school.com", "pupil2@school.com"])
+    const emailNotifier : IMessager = new EmailMessager(["pupil1@school.com", "pupil2@school.com"])
     emailNotifier.send("Hi kids! The school is closed because the teachers are on strike.")
 
     console.log()

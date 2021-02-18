@@ -2,7 +2,7 @@ export interface IMessager {
     send(message : string) : void
 }
 
-export class EmailMessagerLegacy implements IMessager {
+export class EmailMessager implements IMessager {
     private receivers : string[] // email addresses
 
     public constructor(receivers : string[]) {
@@ -17,16 +17,16 @@ export class EmailMessagerLegacy implements IMessager {
 }
 
 export class SMSMessagerWrapper implements IMessager {
-    private anotherNotifier : IMessager
+    private anotherMessager : IMessager
     private receivers : string[] // cellphone numbers
 
-    public constructor(anotherNotifier : IMessager, receivers : string[]) {
-        this.anotherNotifier = Object.create(anotherNotifier)
+    public constructor(anotherMessager : IMessager, receivers : string[]) {
+        this.anotherMessager = Object.create(anotherMessager)
         this.receivers = JSON.parse(JSON.stringify(receivers))
     }
 
     public send(message : string) {
-        this.anotherNotifier.send(message)
+        this.anotherMessager.send(message)
 
         this.receivers.forEach(receiver => {
             console.log(`Sent SMS "${message}" to ${receiver}.`)
@@ -35,16 +35,16 @@ export class SMSMessagerWrapper implements IMessager {
 }
 
 export class FacebookMessagerWrapper implements IMessager {
-    private anotherNotifier : IMessager
+    private anotherMessager : IMessager
     private receivers : string[] // Facebook ids
 
-    public constructor(anotherNotifier : IMessager, receivers : string[]) {
-        this.anotherNotifier = Object.create(anotherNotifier)
+    public constructor(anotherMessager : IMessager, receivers : string[]) {
+        this.anotherMessager = Object.create(anotherMessager)
         this.receivers = JSON.parse(JSON.stringify(receivers))
     }
 
     public send(message : string) {
-        this.anotherNotifier.send(message)
+        this.anotherMessager.send(message)
 
         this.receivers.forEach(receiver => {
             console.log(`Sent Facebook message "${message}" to ${receiver}.`)

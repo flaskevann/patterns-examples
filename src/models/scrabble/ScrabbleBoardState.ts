@@ -1,17 +1,26 @@
 import ScrabbleBoard from "./ScrabbleBoard"
 
-export interface IScrabbleBoardState {
-    canPlayTiles() : boolean
-    canCheckTiles() : boolean
+export abstract class ScrabbleBoardState {
+    private board : ScrabbleBoard // context for states
 
-    getDescription() : string
+    public constructor(board : ScrabbleBoard) {
+        this.board = board
+    }
+
+    protected getBoard() {
+        return this.board
+    }
+
+    abstract canPlayTiles() : boolean
+    abstract canCheckTiles() : boolean
+
+    abstract getDescription() : string
 }
 
-export class ScrabbleBoardReadyState implements IScrabbleBoardState {
-    private board : ScrabbleBoard // context
+export class ScrabbleBoardReadyState extends ScrabbleBoardState {
 
     constructor(board : ScrabbleBoard) {
-        this.board = board
+        super(board)
     }
 
     canPlayTiles() {
@@ -27,17 +36,17 @@ export class ScrabbleBoardReadyState implements IScrabbleBoardState {
     }
 }
 
-export class ScrabbleBoardBusyState implements IScrabbleBoardState {
-    private board : ScrabbleBoard // context
-    private timeCreated : number
-
+export class ScrabbleBoardBusyState extends ScrabbleBoardState {
+    private timeLastPlay : number
+    
     constructor(board : ScrabbleBoard) {
-        this.board = board
-        this.timeCreated = Math.round(Date.now() / 1000)
+        super(board)
+
+        this.timeLastPlay = Math.round(Date.now() / 1000)
     }
 
     canPlayTiles() {
-        if (this.timeCreated + 10 < Math.round(Date.now() / 1000)) return true
+        if (this.timeLastPlay + this.getBoard().getPlayTimeout() < Math.round(Date.now() / 1000)) return true
         else return false
     }
 

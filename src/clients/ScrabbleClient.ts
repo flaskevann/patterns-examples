@@ -6,7 +6,7 @@ export default function run() {
     // .. some kind of client code before
     
     const players : string[] = ["alfa", "beta", "omega", "delta"]
-    const board : ScrabbleBoard = new ScrabbleBoard(players)
+    const board : ScrabbleBoard = new ScrabbleBoard(players, 10)
     
     board.playTiles(players[0], ["W", "K"])
     
