@@ -39,6 +39,7 @@ List of pattern implementation examples so far:
 - Adapter
 - State
 - Wrapper (also called Decorator)
+- Command
 
 ## License
 
