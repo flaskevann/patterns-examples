@@ -30,15 +30,23 @@ Each implementation has to have at least one model, a UML diagram and some test 
 
 List of pattern implementation examples so far:
 
+#### Structural
+
 - Facade (also spelled Façade)
+- Adapter
+- Wrapper (also called Decorator)
+
+#### Creational
+
 - Factory
 - Singleton
+- Builder
+
+#### Behavioral
+
 - Strategy (same as Policy pattern)
 - Observer
-- Builder
-- Adapter
 - State
-- Wrapper (also called Decorator)
 - Command
 
 ## License
