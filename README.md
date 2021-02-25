@@ -35,6 +35,7 @@ List of pattern implementation examples so far:
 - Facade (also spelled Façade)
 - Adapter
 - Wrapper (also called Decorator)
+- Proxy
 
 #### Creational
 
