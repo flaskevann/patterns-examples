@@ -42,6 +42,7 @@ List of pattern implementation examples so far:
 - Factory
 - Singleton
 - Builder
+- Prototype
 
 #### Behavioral
 
