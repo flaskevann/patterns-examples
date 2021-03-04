@@ -1,20 +1,19 @@
 import ICloneable from "../generic/Cloning"
 
-export default class Computer implements ICloneable {
+export default class ComputerConfiguration implements ICloneable {
     private description : string
-    private computerCase : string
+    private chassis : string
     private psu : string
     private motherboard : string
     private cpu : string
     private memory : string
     private gpu : string
     private harddrive : string
-    private opticalDrive : string
     private os : string
 
-    public constructor(description : string, computerCase : string, psu : string, motherboard : string, cpu : string, memory : string, gpu : string, harddrive : string, os : string) {
+    public constructor(description : string, chassis : string, psu : string, motherboard : string, cpu : string, memory : string, gpu : string, harddrive : string, os : string) {
         this.description = `${description}`
-        this.computerCase = `${computerCase}`
+        this.chassis = `${chassis}`
         this.psu = `${psu}`
         this.motherboard = `${motherboard}`
         this.cpu = `${cpu}`
@@ -24,8 +23,8 @@ export default class Computer implements ICloneable {
         this.os = `${os}`
     }
 
-    public clone() : Computer {
-        return new Computer(this.description, this.computerCase, this.psu, this.motherboard, this.cpu, this.memory, this.gpu, this.harddrive, this.os)
+    public clone() : ComputerConfiguration {
+        return new ComputerConfiguration(this.description, this.chassis, this.psu, this.motherboard, this.cpu, this.memory, this.gpu, this.harddrive, this.os)
     }
 
     public getDescription() {
@@ -33,6 +32,13 @@ export default class Computer implements ICloneable {
     }
     public setDescription(description : string) {
         this.description = `${description}`
+    }
+
+    public getChassis() {
+        return `${this.chassis}`
+    }
+    public setChassis(chassis : string) {
+        this.chassis = `${chassis}`
     }
 
     public getPSU() {
@@ -87,7 +93,7 @@ export default class Computer implements ICloneable {
     public getSpecs() {
         return `` +
             `${this.description}: \n` +
-            `${this.computerCase} \n` +
+            `${this.chassis} \n` +
             `${this.psu} \n` +
             `${this.motherboard} \n` +
             `${this.cpu} \n` +

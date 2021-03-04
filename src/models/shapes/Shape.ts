@@ -1,9 +1,9 @@
-export default interface IShape {
-    draw() : void
-    fill(color : string) : void
+export abstract class AbstractShape {
+    public abstract draw() : void
+    public abstract fill(color : string) : void
 }
 
-export class Circle implements IShape {
+export class Circle implements AbstractShape {
     x : number;
     y : number;
     r : number;
@@ -23,7 +23,7 @@ export class Circle implements IShape {
     }
 }
 
-export class Square implements IShape {
+export class Square implements AbstractShape {
     x : number;
     y : number;
     l : number;

@@ -2,7 +2,7 @@ import { IMoney,
          Cash,
          BankAccount } from "../models/money/Money"
 import { DebitCard,
-         CreditCard } from "../models/Money/Proxies"
+         CreditCard } from "../models/money/MoneyProxies"
 
 export default function run() {
 

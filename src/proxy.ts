@@ -5,7 +5,7 @@ import run from "./clients/MoneyClient"
 const fs = require('fs')
 const path = require("path")
 const moneySrc = fs.readFileSync(path.resolve(__dirname, "./models/money/Money.ts"), "utf8")
-const proxiesSrc = fs.readFileSync(path.resolve(__dirname, "./models/money/Proxies.ts"), "utf8")
+const moneyProxiesSrc = fs.readFileSync(path.resolve(__dirname, "./models/money/MoneyProxies.ts"), "utf8")
 const moneyClientSrc = fs.readFileSync(path.resolve(__dirname, "./clients/MoneyClient.ts"), "utf8")
 
 /*
@@ -17,7 +17,7 @@ console.log()
 console.log("PROXY PATTERN:")
 console.log("--------------------------------------------")
 console.log()
-console.log(proxiesSrc)
+console.log(moneyProxiesSrc)
 
 /*
     Demo:
