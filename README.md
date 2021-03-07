@@ -36,9 +36,9 @@ List of pattern implementation examples so far:
 - Adapter
 - Wrapper (also called Decorator)
 - Proxy
-- ~~Filter (also called Criteria~~ (unnecessary pattern IMHO, skipped for now)
+- ~~Filter (also called Criteria~~ (impractical and it breaks SRP IMHO, skipped)
 - Composite
-- ~~Flyweight~~ (unnecessary pattern IMHO, skipped for now)
+- ~~Flyweight~~ (redundant pattern IMHO, skipped)
 
 #### Creational
 
