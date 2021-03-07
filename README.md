@@ -36,6 +36,7 @@ List of pattern implementation examples so far:
 - Adapter
 - Wrapper (also called Decorator)
 - Proxy
+- ~~Filter (also called Criteria~~ (unnecessarily pattern IMHO, skipped for now)
 - Composite
 
 #### Creational
