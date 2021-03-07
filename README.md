@@ -36,6 +36,7 @@ List of pattern implementation examples so far:
 - Adapter
 - Wrapper (also called Decorator)
 - Proxy
+- Composite
 
 #### Creational
 
