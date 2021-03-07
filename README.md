@@ -17,11 +17,11 @@ Every commonly used pattern and principle is to be studied and learned by creati
 
 I'm mostly doing this for myself, but anybody interested can use the examples and or contribute if they want to.
 
-### Contents
+## Contents
 
 Each implementation has to have at least one model, a UML diagram and some demo execution code. Unit tests would also be nice. ;-)
 
-#### Example
+### Example
 
 1. Look to the <code>Shape</code> model and the <code>ShapeClient</code>.
 2. All of this source code can be printed to the console by executing <code>node run factory-and-facade.ts</code>.
