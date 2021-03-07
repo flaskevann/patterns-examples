@@ -13,13 +13,13 @@ And soon after I started work on this project, which is probably going to be nev
 
 ## The Plan
 
-Every commonly used pattern and principle is to be studied and learned by creating and documenting a working example implementation. This implementation can then easily be looked up again later if something suddenly becomes unclear. Sometimes an existing example may also need to be updated or improved upon if something is missing or just plain wrong. This is a work in progress after all.
+Every commonly used pattern and principle is to be studied and learned by creating and documenting a working example implementation, if not too abstract. This implementation can then easily be looked up again later if something suddenly becomes unclear. Sometimes an existing example may also need to be updated or improved upon if something is missing or just plain wrong.
 
 I'm mostly doing this for myself, but anybody interested can use the examples and or contribute if they want to.
 
 ### Contents
 
-Each implementation has to have at least one model, a UML diagram and some test execution code. Unit tests would also be nice. ;-)
+Each implementation has to have at least one model, a UML diagram and some demo execution code. Unit tests would also be nice. ;-)
 
 #### Example
 
@@ -53,6 +53,16 @@ List of pattern implementation examples so far:
 - Observer
 - State
 - Command
+
+### Principles
+
+#### SOLID
+
+- Single-Responsibility Principle (SRP) = "Gather together the things that change for the same reasons. Separate those things that change for different reasons."
+- Open-Closed Principle (OCP) = "Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification. Because it's better to add new needed functionality instead of changing existing relied upon code and cause breaking changes."
+- Liskov Substitution Principle (LSP) = "Base types should be replaceable with its subtypes. Because new specialized behavior doesn't mean the class' basic nature should change."
+- Interface Segregation Principle (ISP) = "Clients should not be forced to depend upon interfaces that they do not use. So split them up!”
+- Dependency Inversion Principle (DIP) = "High level modules AND low level modules should BOTH depend on abstractions."
 
 ## License
 
