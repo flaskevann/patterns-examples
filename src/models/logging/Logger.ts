@@ -1,7 +1,6 @@
-const fs = require('fs')
 
 export interface ILogger {
-    setup(filePath : string) : void
+    setup(consoleLogFunc : any, fileLogFunc : any, filePath : string) : void
     logToFile(text : string) : void
     logToConsole(text : string) : void
 }
@@ -9,6 +8,10 @@ export interface ILogger {
 export class Logger implements ILogger {
 
     private static instance : ILogger
+
+    private static consoleLogFunc : any
+
+    private static fileLogFunc : any
     private static filePath : string
 
     private constructor() {} // private constructor blocks instantiation from a client
@@ -20,18 +23,23 @@ export class Logger implements ILogger {
         return Logger.instance
     }
 
-    public setup(filePath : string) : void {
+    public setup(consoleLogFunc : any, fileLogFunc : any, filePath : string) : void {
+        Logger.consoleLogFunc = consoleLogFunc
+        Logger.fileLogFunc = fileLogFunc
         Logger.filePath = filePath
     }
 
     public logToFile(text : string) : void {
-        if (!Logger.filePath)
-            throw new Error(`Can't log to file because Logger has been configured without a file path.`)
+        if (!Logger.fileLogFunc || !Logger.filePath)
+            throw new Error(`Can't log to file because Logger has been configured without file logging function or file path.`)
 
-        fs.writeFileSync(Logger.filePath, text, "utf8")
+        Logger.fileLogFunc(Logger.filePath, text)
     }
 
     public logToConsole(text : string) : void {
-        console.log(text)
+        if (!Logger.consoleLogFunc)
+            throw new Error(`Can't log to console because Logger has been configured without console logging function.`)
+
+        Logger.consoleLogFunc(text)
     }
 }
