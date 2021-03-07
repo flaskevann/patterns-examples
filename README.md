@@ -38,6 +38,7 @@ List of pattern implementation examples so far:
 - Proxy
 - ~~Filter (also called Criteria~~ (unnecessary pattern IMHO, skipped for now)
 - Composite
+- ~~Flyweight~~ (unnecessary pattern IMHO, skipped for now)
 
 #### Creational
 
