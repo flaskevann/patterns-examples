@@ -1,22 +1,22 @@
 
-export default class Component {
+export default class HardwareComponent {
     private type : string
     private name : string
-    private subComponents : Component[] = new Array()
+    private subComponents : HardwareComponent[] = new Array()
 
     public constructor(type : string, name : string) {
         this.type = `${type}`
         this.name = `${name}`
     }
 
-    public add(component : Component) {
+    public add(component : HardwareComponent) {
         if (this.subComponents.indexOf(component) === -1)
             this.subComponents.push(component)
         else
             throw new Error("Component already added.")
     }
     
-    public remove(component : Component) {
+    public remove(component : HardwareComponent) {
         for (var c = 0; c < this.subComponents.length; c++) {
             var existingComponent = this.subComponents[c]
 

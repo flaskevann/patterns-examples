@@ -54,6 +54,7 @@ List of pattern implementation examples so far:
 - Observer
 - State
 - Command
+- Iterator
 
 ### Principles
 
