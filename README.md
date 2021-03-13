@@ -55,6 +55,7 @@ List of pattern implementation examples so far:
 - State
 - Command
 - Iterator
+- Mediator
 
 ### Principles
 
