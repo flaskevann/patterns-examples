@@ -1,6 +1,6 @@
 import ScrabbleBoard from "./ScrabbleBoard"
 
-export abstract class ScrabbleBoardState {
+export abstract class AbstractScrabbleBoardState {
     private board : ScrabbleBoard // context for states
 
     public constructor(board : ScrabbleBoard) {
@@ -17,7 +17,7 @@ export abstract class ScrabbleBoardState {
     abstract getDescription() : string
 }
 
-export class ScrabbleBoardReadyState extends ScrabbleBoardState {
+export class ScrabbleBoardReadyState extends AbstractScrabbleBoardState {
 
     constructor(board : ScrabbleBoard) {
         super(board)
@@ -32,13 +32,14 @@ export class ScrabbleBoardReadyState extends ScrabbleBoardState {
     }
 
     getDescription() {
-        return "Ready for new tiles"
+        return "Ready for new tiles to be played"
     }
 }
 
-export class ScrabbleBoardBusyState extends ScrabbleBoardState {
+export class ScrabbleBoardBusyState extends AbstractScrabbleBoardState {
     private timeLastPlay : number
-    
+    private playTimeout : number = 60 // forces pause after each tile play
+                                      // to give players time to challenge    
     constructor(board : ScrabbleBoard) {
         super(board)
 
@@ -46,8 +47,10 @@ export class ScrabbleBoardBusyState extends ScrabbleBoardState {
     }
 
     canPlayTiles() {
-        if (this.timeLastPlay + this.getBoard().getPlayTimeout() < Math.round(Date.now() / 1000)) return true
-        else return false
+        if (this.timeLastPlay + this.playTimeout < Math.round(Date.now() / 1000))
+            return true
+        else
+            return false
     }
 
     canCheckTiles() {
@@ -55,6 +58,6 @@ export class ScrabbleBoardBusyState extends ScrabbleBoardState {
     }
 
     getDescription() {
-        return "Has new tiles that needs to be accepted or rejected"
+        return "Has one or more new tiles that needs to be accepted or rejected"
     }
 }
