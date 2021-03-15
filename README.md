@@ -68,7 +68,9 @@ List of pattern implementation examples so far:
 - Interface Segregation Principle (ISP) = "Clients should not be forced to depend upon interfaces that they do not use. So split them up!”
 - Dependency Inversion Principle (DIP) = "High level modules AND low level modules should BOTH depend on abstractions."
 
-These principles are abstract (and some more than others). But all concrete pattern examples *should* try and follow them ..
+These principles are abstract (and some more than others) ..
+
+But all the concrete pattern examples *should* try and follow them.
 
 ## License
 
