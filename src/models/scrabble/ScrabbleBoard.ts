@@ -4,16 +4,16 @@ import { AbstractScrabbleBoardState,
          ScrabbleBoardReadyState,
          ScrabbleBoardBusyState } from "./ScrabbleBoardState"
 
-import { Space } from "./Space"
 import Tile from "./Tile"
 
-import PlayedScrabbleTilesMemento from "./PlayedScrabbleTilesMemento"
+import { PlayedScrabbleTiles as PlayedTiles, // Memento class
+         PlayedScrabbleTilesHistory as PlayedTilesHistory } from "./PlayedScrabbleMemento" // Caretaker of Memento objects
 
 
 export default class ScrabbleBoard {
-    private spaces : Space[] = new Array()
-    private oldPlayedTiles : Tile[] = new Array()
-    private newPlayedTiles : Tile[]
+    private playedTilesHistory : PlayedTilesHistory = new PlayedTilesHistory()
+    private allPreviouslyPlayedTiles : object // all of the previous played tiles added together
+    private newPlayedTiles : PlayedTiles // the tiles played by the previous player
 
     private players : string[] // player ids
     private turnPlayerId : string
@@ -56,11 +56,11 @@ export default class ScrabbleBoard {
 
         log(`Player ${this.turnPlayerId} is now playing.`)
 
-        // Automatically accept active players previous played tiles
-        if (this.turnPlayerId === this.playerIdForPlayedTiles && this.state.canCheckNewTiles())
+        // Automatically accept turn players previous played tiles, if still in limbo
+        if (this.state.canCheckNewTiles() && this.newPlayedTiles.getPlayerId() === this.turnPlayerId)
             this.acceptNewTiles()
     }
-
+    
     public skipTurn(playerId : string) {
         if (this.turnPlayerId !== playerId)
             throw new Error("A waiting player can not skip a turn.")
@@ -84,27 +84,26 @@ export default class ScrabbleBoard {
     }
 
 
-    public canPlayTiles() {
-        return this.state.canPlayTiles()
+    public canPlayNewTiles() {
+        return this.state.canPlayNewTiles()
     }
 
-    public playNewTiles(playerId : string, newTiles : Tile[]) {
-        if (!newTiles || newTiles.length === 0)
-            throw new Error("Cannot play without tiles.")
+    public playNewTiles(newPlayedTiles : PlayedTiles) {
+        if (!newPlayedTiles || Object.keys(newPlayedTiles).length === 0)
+            throw new Error("Cannot play without new tiles.")
 
-        if (playerId !== this.turnPlayerId)
+        if (newPlayedTiles.getPlayerId() !== this.turnPlayerId)
             throw new Error("A waiting player has to wait his/hers turn before playing new tiles.")
 
-        if (!this.state.canPlayTiles())
-            throw new Error("The board has new tiles that the players must be allowed to challenge first.")
+        if (!this.state.canPlayNewTiles())
+            throw new Error("The board has new tiles that the other player(s) must be given time to possibly challenge first.")
 
         if (this.state.canCheckNewTiles())
-            this.acceptNewTiles()
+            this.acceptNewTiles() // Accept previously played tiles before playing new ones
 
-        this.newPlayedTiles = JSON.parse(JSON.stringify(newTiles))
-
-        log(`Player ${this.turnPlayerId} played ${(""+newTiles.map(tile => " "+tile)).trim()}.`)
-
+        this.newPlayedTiles = Object.assign(newPlayedTiles)
+        log(`Player ${this.turnPlayerId} played ${this.newPlayedTiles.toString()}.`)
+        
         this.setState(new ScrabbleBoardBusyState(this))
 
         this.setNextPlayer()
@@ -116,14 +115,15 @@ export default class ScrabbleBoard {
     }
 
     public checkNewTiles(playerId : string) {
-        if (!this.state.canCheckNewTiles())
-            throw new Error("The board does not have any new tiles to be checked.")
+        if (!this.state.canCheckNewTiles() || !this.newPlayedTiles)
+            throw new Error("The board does not have any new played tiles to be checked.")
 
-        if (playerId === this.playerIdForPlayedTiles)
+        if (playerId === this.newPlayedTiles.getPlayerId())
             throw new Error("The player cannot ask for his/hers own tiles to be checked.")
 
-        log(`The new tiles belonging to ${this.playerIdForPlayedTiles} was challenged by ${playerId}.`)
+        log(`The new played tiles belonging to ${this.newPlayedTiles.getPlayerId()} was challenged by ${playerId}.`)
 
+        // Fake word checking algo:
         if (Math.random() < 0.5) {
             this.rollbackNewTiles()
         } else {
@@ -133,43 +133,41 @@ export default class ScrabbleBoard {
 
 
     private acceptNewTiles() {
-        if (!this.state.canCheckNewTiles())
-            throw new Error("There is no new tiles to accept.")
+        if (!this.state.canCheckNewTiles() || !this.newPlayedTiles)
+            throw new Error("The board has no new played tiles to accept.")
 
-        this.oldPlayedTiles.push(...this.newPlayedTiles)
+        const playerId = this.newPlayedTiles.getPlayerId()
+        const newPlayedTiles = this.newPlayedTiles.getTiles()
         this.newPlayedTiles = null
 
-        log(`The new tiles belonging to ${this.playerIdForPlayedTiles} was accepted.`)
-
-        this.playerIdForPlayedTiles = null
+        Object.keys(newPlayedTiles).forEach((spaceNumber : number) => {
+            this.allPreviouslyPlayedTiles[spaceNumber] = newPlayedTiles[spaceNumber]
+        });
+        log(`The new tiles belonging to ${playerId} was accepted.`)
 
         this.setState(new ScrabbleBoardReadyState(this))
     }
 
     private rollbackNewTiles() {
         if (!this.state.canCheckNewTiles())
-            throw new Error("There is no new tiles to rollback.")
+            throw new Error("The board has no new played tiles to rollback.")
 
+        this.playedTilesHistory.rollback()
+
+        const playerId = this.newPlayedTiles.getPlayerId()
+        log(`The played tiles belonging to ${playerId} was rejected.`)
+        this.newPlayedTiles.getTiles().forEach((tile : Tile) => {
+            log(`Previously played ${tile.getLetter()} tile given back to ${playerId}.`)
+        });
         this.newPlayedTiles = null
-
-        log(`The new tiles belonging to ${this.playerIdForPlayedTiles} was rejected.`)
-
+    
         this.setState(new ScrabbleBoardReadyState(this))
     }
-     
-     
+
+
     private setState(newState : AbstractScrabbleBoardState) {
         this.state = newState
 
         log(`(Board state: ${this.state.getDescription()}.)`)
-    }
-
-
-    public saveCurrentBoard() {
-        return new PlayedScrabbleTilesMemento(this.newPlayedTiles, this.turnPlayerId)
-    }
-
-    public restorePreviousBoard() {
-        this.oldPlayedTiles = 
     }
 }

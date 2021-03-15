@@ -11,8 +11,8 @@ export abstract class AbstractScrabbleBoardState {
         return this.board
     }
 
-    abstract canPlayTiles() : boolean
-    abstract canCheckTiles() : boolean
+    abstract canPlayNewTiles() : boolean
+    abstract canCheckNewTiles() : boolean
 
     abstract getDescription() : string
 }
@@ -23,11 +23,11 @@ export class ScrabbleBoardReadyState extends AbstractScrabbleBoardState {
         super(board)
     }
 
-    canPlayTiles() {
+    canPlayNewTiles() {
         return true
     }
 
-    canCheckTiles() {
+    canCheckNewTiles() {
         return false
     }
 
@@ -46,14 +46,14 @@ export class ScrabbleBoardBusyState extends AbstractScrabbleBoardState {
         this.timeLastPlay = Math.round(Date.now() / 1000)
     }
 
-    canPlayTiles() {
+    canPlayNewTiles() {
         if (this.timeLastPlay + this.playTimeout < Math.round(Date.now() / 1000))
             return true
         else
             return false
     }
 
-    canCheckTiles() {
+    canCheckNewTiles() {
         return true
     }
 
