@@ -38,7 +38,7 @@ export class ScrabbleBoardReadyState extends AbstractScrabbleBoardState {
 
 export class ScrabbleBoardBusyState extends AbstractScrabbleBoardState {
     private timeLastPlay : number
-    private playTimeout : number = 60 // forces pause after each tile play
+    private playTimeout : number = 10 // forces pause after each tile play
                                       // to give players time to challenge    
     constructor(board : ScrabbleBoard) {
         super(board)

@@ -56,6 +56,7 @@ List of pattern implementation examples so far:
 - Command
 - Iterator
 - Mediator
+- Memento
 
 ### Principles
 

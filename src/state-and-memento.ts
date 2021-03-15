@@ -6,6 +6,7 @@ const fs = require('fs')
 const path = require("path")
 const scrabbleBoardSrc = fs.readFileSync(path.resolve(__dirname, "./models/scrabble/ScrabbleBoard.ts"), "utf8")
 const scrabbleBoardStateSrc = fs.readFileSync(path.resolve(__dirname, "./models/scrabble/ScrabbleBoardState.ts"), "utf8")
+const playedScrabbleTilesSrc = fs.readFileSync(path.resolve(__dirname, "./models/scrabble/PlayedScrabbleTiles.ts"), "utf8")
 const scrabbleClientSrc = fs.readFileSync(path.resolve(__dirname, "./clients/ScrabbleClient.ts"), "utf8")
 
 /*
@@ -14,14 +15,23 @@ const scrabbleClientSrc = fs.readFileSync(path.resolve(__dirname, "./clients/Scr
 
 console.log()
 console.log()
+console.log("MEMENTO PATTERN:")
+console.log("--------------------------------------------")
+console.log()
+console.log(playedScrabbleTilesSrc)
+
+console.log()
+console.log()
 console.log("STATE PATTERN:")
 console.log("--------------------------------------------")
 console.log()
 console.log(scrabbleBoardStateSrc)
+console.log()
+console.log()
 
 console.log()
 console.log()
-console.log("STATE IN USE:")
+console.log("PATTERNS IN USE:")
 console.log("--------------------------------------------")
 console.log()
 console.log(scrabbleBoardSrc)
