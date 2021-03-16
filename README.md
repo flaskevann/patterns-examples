@@ -73,7 +73,7 @@ But all the concrete pattern examples *should* try and follow them.
 - Interface Segregation Principle (ISP) = "Clients should not be forced to depend upon interfaces that they do not use. So split them up!”
 - Dependency Inversion Principle (DIP) = "High level modules AND low level modules should BOTH depend on abstractions."
 
-#### GRASP (Its purpose: Decide who should create stuff)
+#### GRASP (Its purpose: Decide who should create stuff and what)
 
 - Information expert (The Expert) = "Give the responsibility for creating something to the element that has most of the information about it."
 - Creator = "B should create A if 1) B contains or compositely aggregate instances of A, or 2) instances of B record instances of A, or 3) instances of B closely use instances of A, or 4) instances of B have the initializing information for instances of A and passes it on creation."
