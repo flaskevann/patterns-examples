@@ -61,7 +61,7 @@ List of pattern implementation examples so far:
 
 ### Principles
 
-These principles are abstract (and some more than others) ..
+These principles are abstract (some more than others) ..
 
 But all the concrete pattern examples *should* try and follow them.
 
