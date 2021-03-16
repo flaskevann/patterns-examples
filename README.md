@@ -75,14 +75,14 @@ But all the concrete pattern examples *should* try and follow them.
 
 #### GRASP (Its purpose: Decide who should create stuff)
 
-- Information expert (The Expert) = "Give the responsibility for something to the class that has most of the information about it."
-- Creator = "B should create A if 1) B contains or compositely aggregate instances of A, 2) instances of B record instances of A, 3) instances of B closely use instances of A, or 4) instances of B have the initializing information for instances of A and pass it on creation."
-- Controller = "To be able to continuously react to system events the program must have a control object (a controller) that delegates work. It must also coordinate and control program execution flow. **The controller object is supposed to be an administrator. That means it should do close to zero grunt work itself.**"
+- Information expert (The Expert) = "Give the responsibility for creating something to the element that has most of the information about it."
+- Creator = "B should create A if 1) B contains or compositely aggregate instances of A, or 2) instances of B record instances of A, or 3) instances of B closely use instances of A, or 4) instances of B have the initializing information for instances of A and passes it on creation."
+- Controller = "To be able to continuously react to system events the program must have a control element (a controller) that delegates work. This object must also coordinate and control program execution flow. **The controller object is supposed to be an administrator. That means it should do zero grunt work itself.**"
 - High cohesion = "Don't mix a lot of unrelated things together."
-- Low coupling / Indirection = "Don't create components that directly depends on each other. Assign the responsibility of mediation between the components to intermediate objects."
-- Polymorphism = "If you are dealing with different types of something then use polymorphism. Create and define the different types, don't use endless repetitive if/switch branching."
+- Low coupling / Indirection = "Don't create components that directly depends on each other. Assign the responsibility of mediation between the components to intermediaries."
+- Polymorphism = "If you are dealing with different types of something then use polymorphism. You create and define different types instead of using endless repetitive if/switch branching (which is also error-prone)."
 - Protected variations = Essentially the same as OCP. It's all about protecting yourself from changes.
-- Pure fabrication = "Sometimes low coupling and high cohesion can't be achieved directly when implementing a concept from the problem domain. Then you have to create support classes (pure fabrications) and make it happen yourself."
+- Pure fabrication = "Sometimes low coupling and high cohesion can't be achieved directly when implementing a concept from the problem domain. This means you have to create supporting classes (pure fabrications) to succeed."
 
 ## License
 
