@@ -65,7 +65,7 @@ These principles are abstract (and some more than others) ..
 
 But all the concrete pattern examples *should* try and follow them.
 
-#### SOLID (Goal: Keep up code maintainability)
+#### SOLID (its purpose: keep up code maintainability)
 
 - Single-Responsibility Principle (SRP) = "Gather together the things that change for the same reasons. Separate those things that change for different reasons."
 - Open-Closed Principle (OCP) = "Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification. Because it's better to add new needed functionality instead of changing existing relied upon code and cause breaking changes."
@@ -73,7 +73,7 @@ But all the concrete pattern examples *should* try and follow them.
 - Interface Segregation Principle (ISP) = "Clients should not be forced to depend upon interfaces that they do not use. So split them up!”
 - Dependency Inversion Principle (DIP) = "High level modules AND low level modules should BOTH depend on abstractions."
 
-#### GRASP (Goal: Decide who should create stuff)
+#### GRASP (its purpose: decide who should create stuff)
 
 - Information expert (The Expert) = "Give the responsibility for something to the class that has most of the information about it."
 - Creator = "B should create A if 1) B contains or compositely aggregate instances of A, 2) instances of B record instances of A, 3) instances of B closely use instances of A, or 4) instances of B have the initializing information for instances of A and pass it on creation."
